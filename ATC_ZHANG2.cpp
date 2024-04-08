@@ -28,7 +28,12 @@ int main()
     updateDisplay(compSys.time, compSys.currentPlaneDatas, compSys.proximityDetector());
     compSys.updateTime();
 
-    std::cout << compSys.time << std::endl;
+    compSys.spawnNewPlanes();
+    compSys.updateCurrentPlaneLocation();
+    updateDisplay(compSys.time, compSys.currentPlaneDatas, compSys.proximityDetector());
+    compSys.updateTime();
+
+    
 
     
 

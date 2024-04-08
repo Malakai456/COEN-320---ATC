@@ -81,13 +81,23 @@ void ComputerSystem::updateCurrentPlaneLocation()
 {
 	for (int i = 0; i < this->currentPlaneDatas.size(); i++)
 	{
-		CurrentPlaneData elementOfCurrentPlane = this->currentPlaneDatas.at(i);  //elementOfCurrentPlane = the CurrentPlane at the index i of the vector of CurrentPlanes
+		CurrentPlaneData elementOfCurrentPlaneDatas = this->currentPlaneDatas.at(i);  //elementOfCurrentPlane = the CurrentPlaneDatas at the index i of the vector of CurrentPlanes
 
-		elementOfCurrentPlane.currentPosX += elementOfCurrentPlane.currentVelX * this->time;
-		elementOfCurrentPlane.currentPosY += elementOfCurrentPlane.currentVelY * this->time;
-		elementOfCurrentPlane.currentPosZ += elementOfCurrentPlane.currentVelZ * this->time;
+		elementOfCurrentPlaneDatas.currentPosX += elementOfCurrentPlaneDatas.currentVelX * ((double)this->time - initialPlaneDatas.at(elementOfCurrentPlaneDatas.id - 1).arrivalTime);  //velocity* (time - arrival time of plane)
+		elementOfCurrentPlaneDatas.currentPosY += elementOfCurrentPlaneDatas.currentVelY * ((double)this->time - initialPlaneDatas.at(elementOfCurrentPlaneDatas.id - 1).arrivalTime);  //basically accounts for planes who came at time != 0
+		elementOfCurrentPlaneDatas.currentPosZ += elementOfCurrentPlaneDatas.currentVelZ * ((double)this->time - initialPlaneDatas.at(elementOfCurrentPlaneDatas.id - 1).arrivalTime);
 
-		this->currentPlaneDatas.at(i) = elementOfCurrentPlane;
+		if (elementOfCurrentPlaneDatas.currentPosX > MAX_X || elementOfCurrentPlaneDatas.currentPosY > MAX_Y || elementOfCurrentPlaneDatas.currentPosZ > MAX_Z) // take element off vector if goes outside airspace
+		{
+			this->currentPlaneDatas.erase(this->currentPlaneDatas.begin() + i);
+
+			i = (i - 1);    // gotta do this cuz taking an element off the vector pushes all vectors after that element 1 index foward, so you gotta decrement i otherwise 1 element will get skipped in the loop;         
+		}
+		else
+		{
+			this->currentPlaneDatas.at(i) = elementOfCurrentPlaneDatas;     //otherwise                                       
+		}
+
 
 	}
 }
@@ -103,8 +113,6 @@ CurrentPlaneData::CurrentPlaneData(int id, double currentPosX, double currentPos
 	this->currentVelX = currentVelX;
 	this->currentVelY = currentVelY;
 	this->currentVelZ = currentVelZ;
-
-
 }
 
 // distance checker between two planes

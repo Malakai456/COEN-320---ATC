@@ -1,3 +1,7 @@
-﻿  Plane.cpp
-C:\Users\Jean\source\repos\ATC_ZHANG2\ATC_ZHANG2\Plane.cpp(37,21): warning C4018: '<': signed/unsigned mismatch
+﻿  ComputerSystem.cpp
+C:\Users\Jean\source\repos\ATC_ZHANG2\ATC_ZHANG2\ComputerSystem.cpp(23,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Jean\source\repos\ATC_ZHANG2\ATC_ZHANG2\ComputerSystem.cpp(50,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Jean\source\repos\ATC_ZHANG2\ATC_ZHANG2\ComputerSystem.cpp(55,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Jean\source\repos\ATC_ZHANG2\ATC_ZHANG2\ComputerSystem.cpp(57,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Jean\source\repos\ATC_ZHANG2\ATC_ZHANG2\ComputerSystem.cpp(82,20): warning C4018: '<': signed/unsigned mismatch
   ATC_ZHANG2.vcxproj -> C:\Users\Jean\source\repos\ATC_ZHANG2\Debug\ATC_ZHANG2.exe

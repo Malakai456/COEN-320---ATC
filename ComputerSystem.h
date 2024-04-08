@@ -15,7 +15,7 @@ class ComputerSystem
 public:
 
 	int time = 0;
-	int SAFE_DISTANCE = 20;
+	int SAFE_DISTANCE = 20, MAX_X = 100000, MAX_Y = 100000, MAX_Z = 25000;
 
 	std::vector<InitialPlaneData> initialPlaneDatas;
     std::vector<CurrentPlaneData> currentPlaneDatas;
